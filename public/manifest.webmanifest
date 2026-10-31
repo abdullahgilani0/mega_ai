@@ -1,0 +1,24 @@
+{
+    "name": "MEGA: AI lender matching",
+    "short_name": "MEGA",
+    "description": "Find the lenders that fit you, with a licensed broker who reviews every match.",
+    "start_url": "/dashboard",
+    "scope": "/",
+    "display": "standalone",
+    "background_color": "#05070A",
+    "theme_color": "#2F6BFF",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/favicon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any"
+        },
+        {
+            "src": "/apple-touch-icon.png",
+            "sizes": "180x180",
+            "type": "image/png"
+        }
+    ]
+}

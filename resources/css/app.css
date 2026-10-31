@@ -1,0 +1,496 @@
+@import 'tailwindcss';
+
+@import 'tw-animate-css';
+
+@source '../views';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+    --font-sans:
+        'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif,
+        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+        'Noto Color Emoji';
+    --font-display:
+        'Bricolage Grotesque', 'Plus Jakarta Sans', ui-sans-serif, system-ui,
+        sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', monospace;
+    --font-hand: 'Caveat', 'Segoe Script', cursive;
+
+    --radius-lg: var(--radius);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-sm: calc(var(--radius) - 4px);
+
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+
+    --color-sidebar: var(--sidebar);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+
+    /* MEGA brand tokens (spec section 3) */
+    --color-mega: var(--mega-accent);
+    --color-mega-bright: var(--mega-accent-bright);
+    --color-mega-surface: var(--mega-surface);
+    --color-mega-raised: var(--mega-surface-raised);
+    --color-mega-line: var(--mega-line);
+    --color-mega-dim: var(--mega-text-dim);
+    --color-ok: var(--mega-ok);
+    --color-warn: var(--mega-warn);
+    --color-error: var(--mega-error);
+    --color-paper: #f3efe7;
+    --color-ink: #0b1a2e;
+    --color-navy: #0a1628;
+
+    --animate-orb-spin: orb-spin 18s linear infinite;
+    --animate-orb-pulse: orb-pulse 4s ease-in-out infinite;
+    --animate-rise: rise 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+    --animate-marquee: marquee 40s linear infinite;
+    --animate-float: float 7s ease-in-out infinite;
+    --animate-core-collapse: core-collapse 1.25s cubic-bezier(0.7, 0, 0.84, 0)
+        forwards;
+
+    @keyframes core-collapse {
+        from {
+            transform: scale(1);
+            filter: brightness(1);
+        }
+        to {
+            transform: scale(0.08);
+            filter: brightness(2.6);
+        }
+    }
+
+    @keyframes orb-spin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes orb-pulse {
+        0%,
+        100% {
+            opacity: 0.75;
+            transform: scale(1);
+        }
+        50% {
+            opacity: 1;
+            transform: scale(1.04);
+        }
+    }
+
+    @keyframes rise {
+        from {
+            opacity: 0;
+            transform: translateY(16px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes marquee {
+        to {
+            transform: translateX(-50%);
+        }
+    }
+
+    @keyframes float {
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+}
+
+/* Light theme: daytime and accessibility, driven by the same tokens. */
+:root {
+    --mega-bg: #f6f7f9;
+    --mega-surface: #ffffff;
+    --mega-surface-raised: #ffffff;
+    --mega-line: rgba(10, 22, 40, 0.1);
+    --mega-text: #0a1628;
+    --mega-text-dim: #556274;
+    --mega-accent: #1f6af0;
+    --mega-accent-bright: #2d7dff;
+    --mega-ok: #0f9d63;
+    --mega-warn: #b7791f;
+    --mega-error: #d6304a;
+
+    --background: var(--mega-bg);
+    --foreground: var(--mega-text);
+    --card: var(--mega-surface);
+    --card-foreground: var(--mega-text);
+    --popover: var(--mega-surface-raised);
+    --popover-foreground: var(--mega-text);
+    --primary: var(--mega-accent);
+    --primary-foreground: #ffffff;
+    --secondary: #eef1f5;
+    --secondary-foreground: var(--mega-text);
+    --muted: #eef1f5;
+    --muted-foreground: var(--mega-text-dim);
+    --accent: #eaf1ff;
+    --accent-foreground: var(--mega-text);
+    --destructive: var(--mega-error);
+    --destructive-foreground: var(--mega-error);
+    --border: var(--mega-line);
+    --input: rgba(10, 22, 40, 0.16);
+    --ring: var(--mega-accent-bright);
+    --chart-1: #2d7dff;
+    --chart-2: #2fd08a;
+    --chart-3: #ffb547;
+    --chart-4: #a78bfa;
+    --chart-5: #ff5c6c;
+    --radius: 0.5rem;
+    --sidebar: #ffffff;
+    --sidebar-foreground: var(--mega-text);
+    --sidebar-primary: var(--mega-accent);
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: #eef1f5;
+    --sidebar-accent-foreground: var(--mega-text);
+    --sidebar-border: var(--mega-line);
+    --sidebar-ring: var(--mega-accent-bright);
+}
+
+/* Dark is the default: deep canvas, thin lines, one electric-blue accent. */
+.dark {
+    --mega-bg: #05070a;
+    --mega-surface: #0c1016;
+    --mega-surface-raised: #121822;
+    --mega-line: rgba(255, 255, 255, 0.1);
+    --mega-text: #f4f7fb;
+    --mega-text-dim: #9aa6b8;
+    --mega-accent: #2d7dff;
+    --mega-accent-bright: #6fb1ff;
+    --mega-ok: #2fd08a;
+    --mega-warn: #ffb547;
+    --mega-error: #ff5c6c;
+
+    --background: var(--mega-bg);
+    --foreground: var(--mega-text);
+    --card: var(--mega-surface);
+    --card-foreground: var(--mega-text);
+    --popover: var(--mega-surface-raised);
+    --popover-foreground: var(--mega-text);
+    --primary: var(--mega-accent);
+    --primary-foreground: #ffffff;
+    --secondary: #121822;
+    --secondary-foreground: var(--mega-text);
+    --muted: #121822;
+    --muted-foreground: var(--mega-text-dim);
+    --accent: #142035;
+    --accent-foreground: var(--mega-text);
+    --destructive: var(--mega-error);
+    --destructive-foreground: var(--mega-error);
+    --border: var(--mega-line);
+    --input: rgba(255, 255, 255, 0.14);
+    --ring: var(--mega-accent-bright);
+    --sidebar: #080b10;
+    --sidebar-foreground: var(--mega-text);
+    --sidebar-primary: var(--mega-accent);
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: #121822;
+    --sidebar-accent-foreground: var(--mega-text);
+    --sidebar-border: var(--mega-line);
+    --sidebar-ring: var(--mega-accent-bright);
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+        font-feature-settings: 'ss01', 'cv11';
+    }
+
+    :focus-visible {
+        outline: 2px solid var(--mega-accent-bright);
+        outline-offset: 2px;
+    }
+}
+
+@layer components {
+    .eyebrow {
+        @apply text-[11px] font-medium tracking-[0.22em] uppercase;
+    }
+
+    .glass {
+        @apply border border-white/10 bg-white/[0.04] backdrop-blur-xl;
+    }
+
+    .num {
+        @apply font-mono tabular-nums;
+    }
+
+    .grain {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+    }
+}
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: -16;
+    }
+}
+
+/* ---------- Modern type + motion system ---------- */
+
+html {
+    scroll-behavior: smooth;
+}
+
+.font-display {
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    font-optical-sizing: auto;
+}
+
+/* Emphasis in display type is colour, not italics. */
+.font-display em {
+    font-style: normal;
+}
+
+.text-gradient {
+    background: linear-gradient(
+        100deg,
+        #2f6bff 0%,
+        #7b6ce0 40%,
+        #ff7a59 75%,
+        #2f6bff 100%
+    );
+    background-size: 220% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradient-pan 7s ease-in-out infinite alternate;
+}
+
+@keyframes gradient-pan {
+    to {
+        background-position: 100% center;
+    }
+}
+
+/* Each word rises out of a mask. */
+.word-mask {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+    padding-bottom: 0.08em;
+    margin-bottom: -0.08em;
+}
+
+.word-rise {
+    display: inline-block;
+    animation: word-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes word-rise {
+    from {
+        transform: translateY(110%) rotate(4deg);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0) rotate(0);
+        opacity: 1;
+    }
+}
+
+/* Line that draws itself. */
+.draw-in path {
+    stroke-dasharray: 260;
+    stroke-dashoffset: 260;
+    animation: draw-in 1.4s 0.9s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+@keyframes draw-in {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* Soft drifting aurora blobs. */
+@keyframes aurora {
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+    33% {
+        transform: translate(8%, -6%) scale(1.1);
+    }
+    66% {
+        transform: translate(-6%, 8%) scale(0.95);
+    }
+}
+
+.aurora {
+    animation: aurora 18s ease-in-out infinite;
+}
+
+/* Animated "border beam" for AI elements. */
+@property --beam-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.beam {
+    position: relative;
+    isolation: isolate;
+}
+
+.beam::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: conic-gradient(
+        from var(--beam-angle),
+        transparent 0 65%,
+        #2f6bff 78%,
+        #a78bfa 87%,
+        #ff7a59 94%,
+        transparent 100%
+    );
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: beam-spin 4.5s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes beam-spin {
+    to {
+        --beam-angle: 360deg;
+    }
+}
+
+/* Scan line sweeping over a document. */
+@keyframes scan {
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+    10%,
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(var(--scan-distance, 120px));
+        opacity: 0;
+    }
+}
+
+.scan-line {
+    animation: scan 2.6s ease-in-out infinite;
+}
+
+@keyframes caret {
+    50% {
+        opacity: 0;
+    }
+}
+
+.caret {
+    animation: caret 1s steps(1) infinite;
+}
+
+@keyframes shimmer {
+    to {
+        transform: translateX(200%);
+    }
+}
+
+/* Custom range slider used on the homepage calculator. */
+.mega-range {
+    appearance: none;
+    height: 6px;
+    border-radius: 999px;
+    background: linear-gradient(
+        90deg,
+        #2f6bff var(--fill, 50%),
+        rgba(19, 35, 61, 0.12) var(--fill, 50%)
+    );
+    cursor: pointer;
+}
+
+.mega-range::-webkit-slider-thumb {
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 999px;
+    background: #ffffff;
+    border: 6px solid #2f6bff;
+    box-shadow: 0 4px 14px rgba(47, 107, 255, 0.45);
+    transition: transform 0.15s;
+}
+
+.mega-range::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+}
+
+.mega-range::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 999px;
+    background: #ffffff;
+    border: 6px solid #2f6bff;
+    box-shadow: 0 4px 14px rgba(47, 107, 255, 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

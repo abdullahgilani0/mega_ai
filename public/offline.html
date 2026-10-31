@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Offline · MEGA</title>
+        <style>
+            body {
+                margin: 0;
+                min-height: 100vh;
+                display: grid;
+                place-items: center;
+                background: #05070a;
+                color: #f4f7fb;
+                font-family: system-ui, sans-serif;
+                text-align: center;
+                padding: 24px;
+            }
+            .orb {
+                width: 96px;
+                height: 96px;
+                border-radius: 50%;
+                margin: 0 auto 28px;
+                background: radial-gradient(
+                    circle at 38% 32%,
+                    #bfd9ff,
+                    #4d96ff 20%,
+                    #1d5be0 45%,
+                    #061636
+                );
+                box-shadow: 0 0 60px rgba(45, 125, 255, 0.5);
+            }
+            p {
+                color: #9aa6b8;
+                max-width: 320px;
+                margin: 12px auto 0;
+                line-height: 1.5;
+            }
+            button {
+                margin-top: 28px;
+                background: #2f6bff;
+                color: #fff;
+                border: 0;
+                border-radius: 999px;
+                padding: 12px 24px;
+                font-size: 15px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <div class="orb"></div>
+            <h1>You're offline</h1>
+            <p>
+                Your application is saved. Reconnect and pick up exactly where
+                you left off.
+            </p>
+            <button onclick="location.reload()">Try again</button>
+        </main>
+    </body>
+</html>
